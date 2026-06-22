@@ -1,0 +1,197 @@
+* {
+	box-sizing: border-box;
+	font-size: inherit;
+	font-family: inherit;
+	color: inherit;
+	text-transform: inherit;
+	margin: 0;
+	padding: 0;
+	visibility: inherit;
+	
+	transition-behavior: allow-discrete;
+	
+	&:focus-visible {
+		outline: none;
+	}
+}
+
+:root {
+	font-family: "ComicRelief", "Roboto", Arial, Helvetica, sans-serif;
+	
+	font-size: 1.5rem;
+	
+	scroll-behavior: smooth;
+	
+	--highlight-bg-color: hsl(200, 100%, 75%);
+	--question-color: hsl(51, 100%, 48%);
+	--reply-color: hsl(130, 100%, 45%);
+	
+	--negative-color: hsl(0, 100%, 45%);
+	
+	--accent-color: hsl(258, 100%, 63%);
+	--secondary-accent-color: hsl(230, 100%, 63%);
+}
+
+#overview {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5em;
+	
+	margin: 0.5em;
+	
+	& h1 {
+		font-size: 2em;
+	}
+	
+	& details {
+		border: 0.1em solid black;
+		border-radius: 0.2em;
+		
+		padding: 0.5em;
+		
+		& > summary {
+			user-select: none;
+		}
+		
+		& > .content {
+			display: flex;
+			flex-direction: column;
+			gap: 0.2em;
+			margin-block: 0.2em;
+			margin-inline-start: 1em;
+			
+			& h2 {
+				color: var(--accent-color);
+				
+				margin-block-start: 0.5em;
+			}
+		}
+	}
+}
+
+#report {
+	
+	& header {
+		background-color: lightgray;
+		
+		padding: 0.5em;
+		
+		& h1 {
+			font-size: 2em;
+			
+			color: var(--accent-color);
+		}
+		
+		& .info {
+			display: flex;
+			gap: 0.25em;
+			
+			& > :first-child::after {
+				content: ":";
+			}
+			
+			& > :last-child {
+				color: var(--secondary-accent-color);
+			}
+		}
+	}
+	
+	& main {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5em;
+		
+		padding: 0.5em;
+		
+		& .time {
+			color: white;
+		}
+		
+		& img.photo {
+			align-self: start;
+			
+			max-width: 30%;
+			
+			object-fit: contain;
+		}
+		
+		& > * {
+			display: flex;
+			gap: 0.25em;
+			
+			border-radius: 0.2em;
+			
+			padding: 0.2em;
+			
+			&.event {
+				background-color: var(--highlight-bg-color);
+			}
+			
+			&.question {
+				background-color: var(--question-color);
+			}
+			
+			&.curse {
+				background-color: var(--accent-color);
+			}
+			
+			&.powerup {
+				background-color: darkgray;
+			}
+			
+			&.reply {
+				&:has(img.screenshot) {
+					flex-direction: column;
+				}
+				
+				background-color: var(--reply-color);
+				
+				& .miss, & .randomize {
+					font-weight: bold;
+				}
+			}
+			
+			& .name {
+				font-weight: bolder;
+			}
+			
+			& .location::before {
+				content: "-> ";
+			}
+			
+			& :not(img).photo::before {
+				content: "of ";
+			}
+			
+			& .bonus_rolls::before {
+				content: "(Question already asked, hider bonus: ";
+			}
+			
+			& .bonus_rolls::after {
+				content: "x)";
+			}
+			
+			& .penalty {
+				color: var(--negative-color);
+				font-weight: bolder;
+				
+				&::before {
+					content: "Answered too late. ";
+				}
+				
+				&::after {
+					content: " minute(s) penalty subtracted from hiding time and no cards were drawn";
+				}
+			}
+			
+			& .clarification::before {
+				content: "(";
+			}
+			
+			& .clarification::after {
+				content: ")";
+			}
+			
+		}
+	}
+}
