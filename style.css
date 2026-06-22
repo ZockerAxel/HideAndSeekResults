@@ -146,7 +146,7 @@
 				
 				background-color: var(--reply-color);
 				
-				& .miss, & .randomize {
+				& .miss, & .hit, & .randomize {
 					font-weight: bold;
 				}
 			}
