@@ -111,6 +111,7 @@
 			align-self: start;
 			
 			max-width: 30%;
+			max-height: 50vh;
 			
 			object-fit: contain;
 		}
