@@ -27,6 +27,7 @@
 	--reply-color: hsl(130, 100%, 45%);
 	
 	--negative-color: hsl(0, 100%, 45%);
+	--light-negative-color: hsl(0, 100%, 75%);
 	
 	--accent-color: hsl(258, 100%, 63%);
 	--secondary-accent-color: hsl(230, 100%, 63%);
@@ -43,11 +44,15 @@
 		font-size: 2em;
 	}
 	
-	& details {
+	& details, & .disclaimer {
 		border: 0.1em solid black;
 		border-radius: 0.2em;
 		
 		padding: 0.5em;
+		
+		&.disclaimer {
+			background-color: var(--light-negative-color);
+		}
 		
 		& > summary {
 			user-select: none;
